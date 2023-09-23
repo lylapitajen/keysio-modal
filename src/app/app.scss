@@ -1,0 +1,559 @@
+@import "~bootstrap/scss/bootstrap";
+
+$menu-border: 1px solid #efefef;
+$connection-line-border: 1px solid #e4e4e4;
+
+$keysio-black: #2a304a;
+$keysio-light-blue: #e8f7ff;
+$button-light-blue: #d7f5fd;
+$alice-blue: #95d8eb;
+
+$white: #fff;
+$medium-grey: #8d909c;
+$light-grey: #e8e8eb;
+$border-grey-dark: #dee2e6;
+$border-grey-light: #efefef;
+
+$pink: #ff97ee;
+$dark-blue: #1176bd;
+
+$notes-background: #fbfbfb;
+
+$notes-border: 1px solid $border-grey-dark;
+$individual-note-border: 0.75px solid $border-grey-light;
+
+* {
+  font-family: "Inter", sans-serif;
+  color: $keysio-black;
+}
+
+.base-page {
+  padding: 8rem;
+  margin: auto;
+
+  img {
+    padding-bottom: 3rem;
+  }
+
+  .text-content {
+    background-color: white;
+  }
+}
+
+#properties-modal .modal-content {
+  border-radius: 1.25rem;
+  background: $white;
+
+  .modal-header {
+    background: $keysio-light-blue;
+    display: flex;
+    padding: 0.75rem 1.25rem;
+    justify-content: center;
+    align-items: center;
+    border-radius: 1.25rem 1.25rem 0 0;
+
+    .modal-title {
+      color: $keysio-black;
+      font-size: 1.125rem;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 170%;
+      width: 100%;
+      text-align: center;
+    }
+
+    .btn-close {
+      background-color: $light-grey;
+      border-radius: 100%;
+      font-size: 0.5rem;
+      color: $medium-grey;
+      padding: 0.4rem;
+    }
+  }
+
+  .modal-body {
+    height: 80vh;
+    overflow-y: scroll;
+    overflow-x: hidden;
+  }
+
+  #properties-modal-content {
+    .property {
+      display: flex;
+      overflow: hidden;
+
+      & > div {
+        display: inline-block;
+      }
+
+      .property-number-area {
+        width: 7%;
+        vertical-align: top;
+
+        .number-circle {
+          border-radius: 100%;
+          display: flex;
+          width: 2rem;
+          height: 2rem;
+          padding: 0.64831rem;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          background-color: $button-light-blue;
+          box-shadow: 3px 5px 18px 0px rgba(0, 0, 0, 0.02);
+          color: $keysio-black;
+        }
+
+        .vertical-dashed-line {
+          border-left: 1px dashed rgba(42, 48, 74, 0.3);
+          height: calc(100% - 2rem);
+          margin-left: 1rem;
+        }
+      }
+
+      .property-card-area {
+        width: 93%;
+        border-radius: 0.9375rem;
+        border: 1px solid #efefef;
+        background: #fff;
+        box-shadow: 3px 5px 18px 0px rgba(0, 0, 0, 0.02);
+        margin-bottom: 1rem;
+
+        .user-property {
+          background: rgba(215, 245, 253, 0.2);
+          display: block;
+          padding: 1.5rem;
+          flex-direction: column;
+          align-items: center;
+          text-align: center;
+
+          .user-property-icon {
+            display: inline-block;
+            vertical-align: top;
+          }
+
+          .user-property-info {
+            display: inline-block;
+            text-align: left;
+            padding-left: 1rem;
+          }
+
+          h3 {
+            color: $keysio-black;
+            font-size: 0.875rem;
+            margin: 0;
+            line-height: 1rem;
+          }
+
+          span {
+            color: $keysio-black;
+            font-size: 0.75rem;
+          }
+        }
+
+        .non-user-property {
+          vertical-align: top;
+          padding: 1rem;
+
+          .property-info {
+            display: inline-block;
+            width: 45%;
+
+            .property-icon-wrap {
+              display: inline-block;
+              width: 20%;
+              float: left;
+
+              .property-icon {
+                border-radius: 0.2rem;
+              }
+            }
+
+            .property-info-text {
+              display: inline-block;
+              width: 80%;
+              float: right;
+
+              h4 {
+                color: $keysio-black;
+                font-size: 0.875rem;
+                margin: 0;
+              }
+
+              span {
+                font-size: 0.75rem;
+              }
+            }
+          }
+
+          .agent-info {
+            vertical-align: top;
+            display: inline-block;
+            width: 17%;
+            margin-left: 1rem;
+
+            .agent-icon {
+              border-radius: 100%;
+              display: inline-block;
+              float: left;
+            }
+
+            .agent-info-text {
+              vertical-align: top;
+              display: inline-block;
+              margin-left: 0.5rem;
+
+              h5 {
+                font-size: 0.75rem;
+                margin: 0;
+              }
+
+              .rounded-pill {
+                background-color: $pink !important;
+                font-weight: 300 !important;
+              }
+            }
+          }
+
+          .agent-contact {
+            display: inline-block;
+            width: 27%;
+            vertical-align: top;
+            padding-left: 0.5rem;
+
+            a {
+              color: $dark-blue;
+              font-size: 0.75rem;
+              line-height: 0.2rem;
+              text-decoration: none;
+              vertical-align: top;
+
+              svg {
+                fill: $alice-blue;
+                margin-right: 0.2rem;
+              }
+
+              &.agent-phone {
+                color: $keysio-black;
+              }
+            }
+          }
+
+          .property-icons {
+            display: inline-block;
+            width: 8%;
+            vertical-align: top;
+            text-align: center;
+
+            .dropstart {
+              height: 1.4rem;
+              width: 1.4rem;
+              display: inline-block;
+
+              .dropdown-toggle::before {
+                display: none;
+              }
+
+              .dropdown-menu {
+                border-radius: 0.4375rem;
+                border: $menu-border;
+                box-shadow: 3px 5px 18px 0px rgba(0, 0, 0, 0.02);
+                font-size: 0.75rem;
+                padding: 0;
+                margin-top: 0;
+
+                .dropdown-item {
+                  color: $keysio-black;
+                  font-weight: 325;
+                  border-bottom: $menu-border;
+
+                  &:last-child {
+                    border-bottom: none;
+                  }
+                }
+              }
+            }
+
+            svg {
+              vertical-align: top;
+              height: 1.4rem;
+              width: 1.4rem;
+              padding: 0 0.3rem;
+              cursor: pointer;
+            }
+
+            .open {
+              -webkit-transition: -webkit-transform 500ms ease-in;
+              -webkit-transform: rotate(180deg);
+              -moz-transform: rotate(180deg);
+              -ms-transform: rotate(180deg);
+              -o-transform: rotate(180deg);
+              transform: rotate(180deg);
+            }
+          }
+
+          .property-milestones {
+            margin-top: 0.5rem;
+            position: relative;
+
+            .background-grey-line {
+              position: absolute;
+              top: 0.8rem;
+              width: 80%;
+              left: 10%;
+              border-bottom: $connection-line-border;
+              background: #e4e4e4;
+              height: 0;
+              z-index: 1;
+            }
+
+            .milestone-mobile-data {
+              display: none;
+            }
+
+            .mobile-grey-line {
+              display: none;
+            }
+
+            .milestones {
+              width: 100%;
+
+              .milestone {
+                width: 20%;
+                height: 50px;
+                display: inline-block;
+                text-align: center;
+
+                img {
+                  position: relative;
+                  z-index: 2;
+                }
+
+                h4 {
+                  font-weight: 400 !important;
+                  font-size: 0.75rem;
+                  line-height: 1rem;
+                  margin: 0.5rem 0 0 0;
+                }
+
+                p {
+                  font-style: italic;
+                  font-size: 0.625rem;
+                  line-height: 1rem;
+                  margin: 0;
+                }
+              }
+            }
+          }
+
+          .property-notes {
+            margin-top: 1.5rem;
+            border-radius: 0.5rem;
+            border: $notes-border;
+            background: $notes-background;
+
+            .note {
+              border-bottom: $individual-note-border;
+              padding: 1rem 1rem;
+
+              .user-info {
+                width: 20%;
+                display: inline-block;
+                vertical-align: top;
+
+                .user-icon {
+                  border-radius: 100%;
+                  display: inline-block;
+                  float: left;
+                }
+
+                .user-info-text {
+                  vertical-align: top;
+                  display: inline-block;
+                  margin-left: 1rem;
+
+                  h5 {
+                    font-size: 0.75rem;
+                    margin: 0;
+                  }
+
+                  .rounded-pill {
+                    background-color: $pink !important;
+                    font-weight: 300;
+                  }
+                }
+              }
+
+              .comment {
+                width: 65%;
+                display: inline-block;
+                vertical-align: top;
+                font-size: 0.625rem;
+                margin: 0;
+              }
+
+              .timestamp {
+                width: 15%;
+                display: inline-block;
+                vertical-align: top;
+                font-size: 0.625rem;
+                font-style: italic;
+                margin: 0;
+                color: $medium-grey;
+                padding-top: 0.25rem;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+//Mobile Styles
+@media (max-width: 991.98px) {
+  #properties-modal .modal-content #properties-modal-content .property {
+    position: relative;
+    overflow: initial;
+
+    .property-number-area {
+      width: 0;
+
+      .number-circle {
+        z-index: 2;
+        position: absolute;
+        top: -0.75rem;
+        left: 0.25rem;
+      }
+
+      .vertical-dashed-line {
+        display: none;
+      }
+    }
+
+    .property-card-area {
+      width: 100%;
+
+      .non-user-property {
+        width: 100%;
+        padding-top: 3rem;
+
+        .property-info {
+          width: 100%;
+
+          .property-info-text {
+            padding-left: 0.5rem;
+          }
+        }
+
+        .agent-info {
+          width: 100%;
+          padding-top: 1rem;
+
+          .agent-info-text {
+            float: left;
+            padding-left: 1rem;
+          }
+        }
+
+        .agent-contact {
+          width: 100%;
+          margin-top: 1rem;
+          padding: 0;
+
+          .agent-email {
+            display: inline;
+          }
+
+          br {
+            display: none;
+          }
+
+          .agent-phone {
+            display: inline;
+            float: right;
+          }
+        }
+
+        .property-icons {
+          position: absolute;
+          top: 0.75rem;
+          right: 0.5rem;
+          width: 5rem;
+        }
+
+        .property-milestones {
+          .background-grey-line {
+            display: none;
+          }
+
+          .milestone-mobile-data {
+            display: block;
+            font-size: 0.75rem;
+
+            .toggle-mobile-milestones {
+              cursor: pointer;
+              color: $dark-blue;
+              float: right;
+            }
+          }
+
+          .mobile-grey-line {
+            display: block;
+            position: absolute;
+            top: 3rem;
+            left: 0.7rem;
+            border-left: 1px solid rgba(42, 48, 74, 0.3);
+            height: 12rem;
+          }
+
+          .milestones {
+            margin-top: 1rem;
+            .milestone {
+              width: 100%;
+              text-align: left;
+
+              img {
+                display: inline-block;
+                vertical-align: top;
+                margin-top: 0.25rem;
+              }
+
+              & > div {
+                display: inline-block;
+                padding-left: 1rem;
+
+                h4 {
+                  margin: 0;
+                }
+
+                span {
+                  padding: 0;
+                }
+              }
+            }
+          }
+        }
+
+        .property-notes .note {
+          .user-info {
+            width: 100%;
+          }
+
+          .comment {
+            padding: 1rem 0;
+            width: 100%;
+          }
+
+          .timestamp {
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+
+  .property-card-area .non-user-property .property-info {
+    width: 100%;
+  }
+}
